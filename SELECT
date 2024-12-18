@@ -110,3 +110,19 @@ SELECT
 FROM BOOK
 WHERE category = '인문' and YEAR(published_date) = 2021
 ORDER BY published_date asc
+
+
+SELECT  DATE_FORMAT(sales_date, '%Y-%m-%d')
+    product_id, 
+    user_id, 
+    sales_amount
+FROM ONLINE_SALE
+WHERE DATE_FORMAT(sales_date, '%Y-%m') = '2022-03'
+UNION
+SELECT  DATE_FORMAT(sales_date, '%Y-%m-%d')
+    product_id, 
+    NULL as user_id, 
+    sales_amount
+FROM OFFLINE_SALE
+WHERE DATE_FORMAT(sales_date, '%Y-%m') = '2022-03'
+ORDER BY product_id asc, user_id asc
