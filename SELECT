@@ -71,3 +71,35 @@ LIMIT 1;
 SELECT COUNT(user_id) AS member_count
 FROM USER_INFO
 WHERE YEAR(JOINED) = 2021 AND AGE BETWEEN 20 AND 29;
+
+
+SELECT  member_id,
+        member_name,
+        gender,
+        DATE_FORMAT(date_of_birth, '%Y-%m-%d')
+FROM MEMBER_PROFILE
+WHERE MONTH(date_of_birth) = 03
+AND gender = 'W'
+AND TLNO IS NOT NULL
+ORDER BY    member_id asc
+
+SELECT  flavor
+FROM FIRST_HALF
+ORDER BY total_order desc, shipment_id asc
+
+SELECT
+    factory_id,
+    factory_name,
+    address
+FROM FOOD_FACTORY
+WHERE address LIKE '강원%'
+ORDER BY factory_id asc
+
+SELECT  pt_name, 
+        pt_no, 
+        gend_cd, 
+        age,
+        IFNULL(TLNO, 'NONE') AS TLNO
+FROM PATIENT
+WHERE age <= 12 AND gend_cd = 'W'
+ORDER BY age desc, pt_name asc;
