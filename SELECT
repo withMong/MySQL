@@ -103,3 +103,10 @@ SELECT  pt_name,
 FROM PATIENT
 WHERE age <= 12 AND gend_cd = 'W'
 ORDER BY age desc, pt_name asc;
+
+SELECT
+    book_id,
+    DATE_FORMAT(published_date, '%Y-%m-%d')
+FROM BOOK
+WHERE category = '인문' and YEAR(published_date) = 2021
+ORDER BY published_date asc
